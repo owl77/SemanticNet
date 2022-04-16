@@ -24,7 +24,7 @@ for x in range(0,length):
  net[x] = net[x] + re.findall(r'\d+b', roget[x]) 
  aux = roget[x].split('.')
  aux2 = [y.strip() for y in aux]
- web[x] = [y for y in aux2 if not y.isdigit() and  y!="adj" and  y!="adv" and y!='' and y!='—n' and y!='v' and y!='n' and y[0]!='(' and y!='phr' and y[0]!='_']
+ web[x] = [y for y in aux2 if not y.isdigit() and  y!="adj" and  y!="adv" and y!='' and y!='—n' and y!='v' and y!='n' and y[0]!='(' and y!='phr' and y[0]!='_' and not y[0] in ['[',']']]
  
  #print(x)
  #print(aux[0])     
@@ -72,7 +72,7 @@ def assoc(p,k):
    mem.append(web[p][n])
   return mem              
      
-#A RANDOM WALK THROUGH THE SEMANTIC NETWORK WITH MINIMUM BOUND ON PATH LENGTH - WARNING, POSSIBLE CYCLES     
+#A RANDOM WALK THROUGH THE SEMANTIC NETWORK WILL MINIMUM BOUND ON PATH LENGTH - WARNING, POSSIBLE CYCLES     
      
 def conv(n):
  aux = talk()
@@ -121,6 +121,10 @@ def semantic(sen,depth):
     if w[len(w)-2:]=="ed":
       sent2.append(w[0:len(w)-2])
       sent2.append(w[0:len(w)-1])
+  if len(w) > 2:
+     if w[len(w)-3:]=="ing":
+       sent2.append(w[0:len(w)-3])
+             
 #strong verb table
  sent = sent + sent2               
  
