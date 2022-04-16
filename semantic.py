@@ -9,6 +9,19 @@ def GetKey(a,dic):
       return x
  return 0           
    
+v = open('verbs.txt','r') 
+preroget = v.read()
+v.close()
+roget = preroget.split('\n')
+verbs = []
+for x in roget:
+  verbs.append(x.split(' '))
+  
+    
+
+   
+   
+   
 
 f = open('roget5.txt','r') 
 preroget = f.read()
@@ -124,7 +137,10 @@ def semantic(sen,depth):
   if len(w) > 2:
      if w[len(w)-3:]=="ing":
        sent2.append(w[0:len(w)-3])
-             
+  for ir in verbs:
+    if w in ir:
+     for e in ir:
+      sent2.append(e)             
 #strong verb table
  sent = sent + sent2               
  
