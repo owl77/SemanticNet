@@ -1,6 +1,9 @@
 import random
 # import os
 
+#to generate roget file do something like
+#cat roget.txt | tr '[:upper:]' '[:lower:]' | tr -c '[:alnum:]\n\r' ' ' | tr ' ' '\n'  |  tr -d '\r' |  sort | uniq > roget
+
 f = open('roget','r') 
 preroget = f.read()
 f.close()
