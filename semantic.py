@@ -72,7 +72,7 @@ def assoc(p,k):
    mem.append(web[p][n])
   return mem              
      
-#A RANDOM WALK THROUGH THE SEMANTIC NETWORK WILL MINIMUM BOUND ON PATH LENGTH - WARNING, POSSIBLE CYCLES     
+#A RANDOM WALK THROUGH THE SEMANTIC NETWORK WITH MINIMUM BOUND ON PATH LENGTH - WARNING, POSSIBLE CYCLES     
      
 def conv(n):
  aux = talk()
