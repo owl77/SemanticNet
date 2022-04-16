@@ -102,7 +102,7 @@ def randext(list,k):
  aux = []
  for i in range(0,k):
    r = random.randint(0,l-1)
-   aux.append(list[i])
+   aux.append(list[r])
  return aux  
                
 
