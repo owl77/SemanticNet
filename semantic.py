@@ -18,12 +18,32 @@ for x in roget:
   verbs.append(x.split(' '))
   
     
+#e = open('encyc.txt','r') 
+#preenc = e.read()
+#e.close()
+#enc = preenc.split('.')
 
-   
-   
+#encyclo = []
+#for x in enc:
+    
+ #encyclo.append(x.strip())
+ 
+gram = ["the","a","for","to","if"",all","some","very","I","you","he","she","on","at","from"]
+#complete... 
+
+def getenc(word):
+ aux = []    
+ for x in encyclo:
+  aux2 = x.split(' ')
+  if word in aux2 and not word in gram:
+      
+    aux.append(x)
+           
+ return aux   
+  
    
 
-f = open('roget5.txt','r') 
+f = open('roget6.txt','r') 
 preroget = f.read()
 f.close()
 roget = preroget.split('#')
@@ -37,7 +57,7 @@ for x in range(0,length):
  net[x] = net[x] + re.findall(r'\d+b', roget[x]) 
  aux = roget[x].split('.')
  aux2 = [y.strip() for y in aux]
- web[x] = [y for y in aux2 if not y.isdigit() and  y!="adj" and  y!="adv" and y!='' and y!='—n' and y!='v' and y!='n' and y[0]!='(' and y!='phr' and y[0]!='_' and not y[0] in ['[',']']]
+ web[x] = [y for y in aux2 if not y.isdigit() and  y!="adj" and  y!="adv" and y!='' and y!='—n' and y!='v' and y!='n' and y!='s' and y[0]!='(' and y!='phr' and y[0]!='_' and not y[0] in ['[',']']]
  
  #print(x)
  #print(aux[0])     
@@ -143,32 +163,47 @@ def semantic(sen,depth):
       sent2.append(e)             
 #strong verb table
  sent = sent + sent2               
- 
+ #print(sent)
+ #em = [randext(getenc(w),1) for w in sent]
+ #en = []
+ #for x in em:
+ # if len(x)!=0:
+  #  en.append(x[0])
  
  sem1 = [find(w) for w in sent]
  sem = []
  for x in sem1:
   sem = sem + x
+ 
        
  clus = [w[0] for w in sem]
+ #print(clus)
  cont = [randext(net2[s],depth) for s in clus]
 # print(clus)
-# print(cont)
+ #print(cont)
  clus2 = copy.deepcopy(clus)
  for x in cont:
   clus2 = clus2 + x
-# print(clus2) 
+ print(clus2) 
  out1 = [assoc(p,depth) for p in clus2]
  out2 = []
  for x in out1:
     out2 = out2 + x
- out2 = list(set(out2))
+ #out2 = list(set(out2))
  
- speech = ' '.join(out2)
+ speech = ' . '.join(out2)
  print(speech)
+ 
  talk = "say " + '"' + speech + '"'
 #This for MacOs ! Change according to your OS ! 
  os.system(talk)
+ 
+ 
+# speech2 = ' '.join(en)
+# print(speech2)
+# talk2 =  "say " + '"' + speech2 + '"'
+# os.system(talk2)
+ 
 # print(len(out2))
  return 
         
